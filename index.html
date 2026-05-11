@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>자기소개서 워크시트 2026 — 합격 포맷</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff;
+    --bg2: #f7f7f5;
+    --bg3: #f0ede8;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999993;
+    --border: rgba(0,0,0,0.12);
+    --border2: rgba(0,0,0,0.22);
+    --radius: 10px;
+    --radius-sm: 6px;
+    --blue-bg: #E6F1FB; --blue-text: #0C447C;
+    --green-bg: #EAF3DE; --green-text: #27500A;
+    --amber-bg: #FAEEDA; --amber-text: #633806;
+    --red-bg: #FCEBEB; --red-text: #A32D2D;
+    --purple-bg: #EEEDFE; --purple-text: #3C3489;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: var(--bg3); color: var(--text); font-size: 14px; line-height: 1.6; min-height: 100vh; }
+
+  .page-wrap { max-width: 780px; margin: 0 auto; padding: 24px 16px 60px; }
+
+  /* Header */
+  .header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .header-left h1 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .header-left p { font-size: 12px; color: var(--text2); }
+  .badge { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; display: inline-block; }
+  .badge-green { background: var(--green-bg); color: var(--green-text); }
+  .badge-blue { background: var(--blue-bg); color: var(--blue-text); }
+  .badge-red { background: var(--red-bg); color: var(--red-text); }
+  .badge-amber { background: var(--amber-bg); color: var(--amber-text); }
+  .badge-purple { background: var(--purple-bg); color: var(--purple-text); }
+
+  /* Progress */
+  .progress-wrap { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 14px 20px; margin-bottom: 16px; display: flex; align-items: center; gap: 16px; }
+  .progress-label { font-size: 12px; color: var(--text2); white-space: nowrap; }
+  .progress-bg { flex: 1; background: var(--bg3); border-radius: 4px; height: 7px; overflow: hidden; }
+  .progress-fill { height: 7px; border-radius: 4px; background: #639922; transition: width 0.4s ease; }
+  .progress-pct { font-size: 13px; font-weight: 600; color: var(--green-text); min-width: 36px; text-align: right; }
+
+  /* Tabs */
+  .tab-nav { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 4px; margin-bottom: 16px; display: flex; gap: 2px; overflow-x: auto; }
+  .tab-btn { background: none; border: none; padding: 8px 14px; font-size: 12px; color: var(--text2); cursor: pointer; border-radius: var(--radius-sm); white-space: nowrap; transition: background 0.15s, color 0.15s; font-family: inherit; }
+  .tab-btn:hover { background: var(--bg2); color: var(--text); }
+  .tab-btn.active { background: var(--text); color: #fff; font-weight: 500; }
+
+  /* Panels */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* Card */
+  .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 14px; }
+  .card-title { font-size: 13px; font-weight: 600; color: var(--text2); letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 0.5px solid var(--border); padding-bottom: 8px; margin-bottom: 16px; }
+
+  /* Fields */
+  .field { margin-bottom: 18px; }
+  .field:last-child { margin-bottom: 0; }
+  .field-label { font-size: 12px; font-weight: 600; color: var(--text2); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .hint { background: var(--bg2); border-radius: var(--radius-sm); padding: 9px 12px; font-size: 12px; color: var(--text2); line-height: 1.65; margin-bottom: 7px; }
+  .hint strong { color: var(--text); font-weight: 600; }
+  textarea, input[type=text] { width: 100%; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); padding: 10px 12px; font-size: 13px; color: var(--text); background: var(--bg); font-family: inherit; line-height: 1.7; transition: border-color 0.15s; }
+  textarea { resize: vertical; }
+  textarea:focus, input[type=text]:focus { outline: none; border-color: #378ADD; box-shadow: 0 0 0 3px rgba(55,138,221,0.12); }
+  .char-row { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+  .char-count { font-size: 11px; color: var(--text3); }
+  .char-count.warn { color: #BA7517; }
+  .char-count.over { color: #A32D2D; font-weight: 600; }
+  .char-tip { font-size: 11px; color: var(--text3); }
+
+  /* Info grid */
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 520px) { .info-grid { grid-template-columns: 1fr; } }
+
+  /* STAR grid */
+  .star-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .star-grid { grid-template-columns: 1fr; } }
+  .star-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 4px; display: inline-block; margin-bottom: 5px; }
+  .star-s { background: var(--blue-bg); color: var(--blue-text); }
+  .star-t { background: var(--purple-bg); color: var(--purple-text); }
+  .star-a { background: var(--amber-bg); color: var(--amber-text); }
+  .star-r { background: var(--green-bg); color: var(--green-text); }
+
+  /* Flow */
+  .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .flow-box { background: var(--bg2); border-radius: var(--radius-sm); padding: 6px 12px; font-size: 12px; font-weight: 500; }
+  .flow-arrow { color: var(--text3); font-size: 14px; }
+
+  /* Delete list */
+  .del-list { display: flex; flex-direction: column; gap: 7px; margin-top: 10px; }
+  .del-item { display: flex; align-items: flex-start; gap: 8px; }
+  .del-x { font-size: 11px; font-weight: 600; background: var(--red-bg); color: var(--red-text); padding: 2px 7px; border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+  .del-text { font-size: 12px; color: var(--text2); line-height: 1.55; }
+
+  /* Checklist */
+  .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
+  .check-item:last-child { border-bottom: none; }
+  .check-item input[type=checkbox] { margin-top: 2px; flex-shrink: 0; width: 16px; height: 16px; cursor: pointer; accent-color: #639922; }
+  .check-content .main { font-size: 13px; line-height: 1.5; }
+  .check-content .sub { font-size: 11px; color: var(--text2); margin-top: 2px; }
+
+  /* Score */
+  .score-box { background: var(--bg2); border-radius: var(--radius); padding: 20px; text-align: center; margin-bottom: 16px; }
+  .score-num { font-size: 38px; font-weight: 700; }
+  .score-lbl { font-size: 12px; color: var(--text2); margin-top: 4px; }
+  .grade-chip { display: inline-block; font-size: 13px; font-weight: 500; padding: 6px 18px; border-radius: 20px; margin-top: 10px; }
+
+  /* Preview */
+  .preview-area { background: var(--bg2); border-radius: var(--radius); padding: 20px; font-size: 13px; line-height: 1.9; white-space: pre-wrap; word-break: break-all; min-height: 200px; color: var(--text); border: 0.5px solid var(--border); }
+  .preview-empty { color: var(--text3); font-style: italic; }
+
+  /* Buttons */
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+  .btn { background: var(--bg); border: 0.5px solid var(--border2); border-radius: var(--radius-sm); padding: 9px 18px; font-size: 13px; color: var(--text); cursor: pointer; font-family: inherit; transition: background 0.15s; }
+  .btn:hover { background: var(--bg2); }
+  .btn-primary { background: var(--text); color: #fff; border-color: var(--text); }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-save { background: var(--green-bg); color: var(--green-text); border-color: #97C459; }
+  .btn-save:hover { background: #C0DD97; }
+
+  /* Notice */
+  .notice { background: var(--blue-bg); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 12px; color: var(--blue-text); margin-bottom: 14px; line-height: 1.6; }
+  .notice strong { font-weight: 600; }
+
+  /* Saved indicator */
+  .saved-indicator { font-size: 11px; color: var(--green-text); margin-left: 8px; display: none; }
+
+  /* Version Manager */
+  .ver-bar { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px 20px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .ver-label { font-size: 12px; color: var(--text2); white-space: nowrap; flex-shrink: 0; font-weight: 600; }
+  .ver-current { font-size: 13px; font-weight: 600; color: var(--text); background: var(--bg2); border: 0.5px solid var(--border2); border-radius: var(--radius-sm); padding: 5px 12px; min-width: 120px; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ver-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+  .ver-btn { font-size: 12px; padding: 5px 12px; border-radius: var(--radius-sm); border: 0.5px solid var(--border2); background: var(--bg); color: var(--text); cursor: pointer; font-family: inherit; transition: background 0.15s; white-space: nowrap; }
+  .ver-btn:hover { background: var(--bg2); }
+  .ver-btn-new { background: var(--green-bg); color: var(--green-text); border-color: #97C459; }
+  .ver-btn-new:hover { background: #C0DD97; }
+  .ver-btn-del { background: var(--red-bg); color: var(--red-text); border-color: #E5A0A0; }
+  .ver-btn-del:hover { background: #F5CCCC; }
+
+  /* Version List Modal */
+  .ver-modal-bg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.35); z-index: 100; align-items: center; justify-content: center; }
+  .ver-modal-bg.open { display: flex; }
+  .ver-modal { background: var(--bg); border-radius: var(--radius); padding: 24px; width: 360px; max-width: 90vw; box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
+  .ver-modal h2 { font-size: 15px; font-weight: 600; margin-bottom: 16px; }
+  .ver-list { display: flex; flex-direction: column; gap: 6px; max-height: 300px; overflow-y: auto; margin-bottom: 16px; }
+  .ver-item { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: var(--radius-sm); border: 0.5px solid var(--border); cursor: pointer; transition: background 0.12s; }
+  .ver-item:hover { background: var(--bg2); }
+  .ver-item.active { border-color: #378ADD; background: var(--blue-bg); }
+  .ver-item-name { flex: 1; font-size: 13px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ver-item-date { font-size: 11px; color: var(--text3); flex-shrink: 0; }
+  .ver-item-del { font-size: 11px; padding: 2px 7px; border-radius: 4px; background: var(--red-bg); color: var(--red-text); border: none; cursor: pointer; flex-shrink: 0; font-family: inherit; }
+  .ver-item-del:hover { background: #F5CCCC; }
+  .ver-modal-input { width: 100%; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); padding: 9px 12px; font-size: 13px; font-family: inherit; margin-bottom: 10px; }
+  .ver-modal-input:focus { outline: none; border-color: #378ADD; box-shadow: 0 0 0 3px rgba(55,138,221,0.12); }
+  .ver-modal-btns { display: flex; gap: 8px; justify-content: flex-end; }
+  .ver-empty { font-size: 12px; color: var(--text3); text-align: center; padding: 16px 0; }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docx/8.5.0/docx.min.js"></script>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="header" style="flex-direction:column;align-items:flex-start;gap:14px;">
+    <img src="data:image/png;base64,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" alt="미래인재개발교육원 로고" style="height:48px;object-fit:contain;">
+    <div style="display:flex;align-items:center;justify-content:space-between;width:100%;flex-wrap:wrap;gap:8px;">
+      <div class="header-left">
+        <h1>자기소개서 워크시트 <span class="badge badge-green">2026 합격 포맷</span></h1>
+        <p>문항별 가이드를 따라 작성하면 완성도 높은 자기소개서 초안이 만들어집니다. </br>각 항목을 충실히 작성하고, 미리보기 내용을 다듬어서 완성하세요. </p>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <button class="btn btn-save" onclick="saveAll()">저장</button>
+        <span class="saved-indicator" id="saved-msg">✓ 저장됨</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Version Manager Bar -->
+  <div class="ver-bar">
+    <span class="ver-label">편집 중인 버전</span>
+    <span class="ver-current" id="ver-current-name">—</span>
+    <div class="ver-actions">
+      <button class="ver-btn" onclick="openVerModal()">📂 버전 목록</button>
+      <button class="ver-btn ver-btn-new" onclick="openNewVerModal()">＋ 새 버전</button>
+      <button class="ver-btn ver-btn-del" onclick="deleteCurrentVer()">🗑 현재 삭제</button>
+    </div>
+  </div>
+
+  <!-- Version List Modal -->
+  <div class="ver-modal-bg" id="ver-modal-bg" onclick="closeModals(event)">
+    <div class="ver-modal" id="ver-list-modal">
+      <h2>저장된 버전 목록</h2>
+      <div class="ver-list" id="ver-list-inner"></div>
+      <div class="ver-modal-btns">
+        <button class="btn" onclick="closeAllModals()">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Version Modal -->
+  <div class="ver-modal-bg" id="new-ver-modal-bg" onclick="closeModals(event)">
+    <div class="ver-modal" id="new-ver-modal">
+      <h2>새 버전 만들기</h2>
+      <p style="font-size:12px;color:var(--text2);margin-bottom:12px;">현재 내용을 복사해서 새 버전으로 시작하거나, 빈 버전으로 시작할 수 있습니다.</p>
+      <input class="ver-modal-input" type="text" id="new-ver-name" placeholder="버전 이름 (예: 삼성전자_경리직무, 1차수정본)" maxlength="40">
+      <div class="ver-modal-btns">
+        <button class="btn" onclick="closeAllModals()">취소</button>
+        <button class="btn" onclick="createNewVer(false)">빈 버전으로 시작</button>
+        <button class="btn btn-primary" onclick="createNewVer(true)">현재 내용 복사</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <span class="progress-label">작성 완성도</span>
+    <div class="progress-bg"><div class="progress-fill" id="prog" style="width:0%"></div></div>
+    <span class="progress-pct" id="pct">0%</span>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab(0)">① 기본 정보</button>
+    <button class="tab-btn" onclick="switchTab(1)">② 지원동기</button>
+    <button class="tab-btn" onclick="switchTab(2)">③ 역량·경험</button>
+    <button class="tab-btn" onclick="switchTab(3)">④ 장단점</button>
+    <button class="tab-btn" onclick="switchTab(4)">⑤ 입사 후 포부</button>
+    <button class="tab-btn" onclick="switchTab(5)">⑥ 자가진단</button>
+    <button class="tab-btn" onclick="switchTab(6)">⑦ 미리보기</button>
+  </div>
+
+  <!-- Panel 0: 기본 정보 -->
+  <div class="tab-panel active" id="panel-0">
+    <div class="card">
+      <div class="card-title">지원 정보 입력</div>
+      <div class="notice"><strong>TIP.</strong> 채용공고에 적힌 직무명을 그대로 입력하세요. 이후 모든 문항의 가이드가 이 정보를 기준으로 작동합니다.</div>
+      <div class="info-grid">
+        <div class="field">
+          <div class="field-label">지원 회사명</div>
+          <input type="text" id="company" placeholder="예: (주)한국전자" oninput="updateProgress(); autoSave()">
+        </div>
+        <div class="field">
+          <div class="field-label">지원 직무</div>
+          <input type="text" id="job" placeholder="예: 경리·회계, 설계 엔지니어" oninput="updateProgress(); autoSave()">
+        </div>
+        <div class="field">
+          <div class="field-label">보유 자격증 / 툴</div>
+          <input type="text" id="certs" placeholder="예: 전산회계 1급, 더존ERP, 엑셀" oninput="updateProgress(); autoSave()">
+        </div>
+        <div class="field">
+          <div class="field-label">핵심 경험 키워드</div>
+          <input type="text" id="exp_key" placeholder="예: 카페 아르바이트, 팀 프로젝트" oninput="updateProgress(); autoSave()">
+        </div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="switchTab(1)">다음 → 지원동기</button>
+    </div>
+  </div>
+
+  <!-- Panel 1: 지원동기 -->
+  <div class="tab-panel" id="panel-1">
+    <div class="card">
+      <div class="card-title">지원동기</div>
+
+      <div class="flow">
+        <div class="flow-box">결정적 사건</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-box">회사 분석</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-box">기여 포인트</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="badge badge-red">Step 1</span> 이 직무를 선택한 결정적 사건</div>
+        <div class="hint">"성장 가능성에 매력을 느꼈습니다" 금지. <strong>언제, 어떤 경험에서 이 직무를 해야겠다고 확신했는지</strong> 구체적 사건으로 시작하세요.</div>
+        <textarea id="motive_event" rows="4" placeholder="직무를 결심하게 된 구체적 순간이나 경험을 적어주세요." oninput="cc(this,'cc1'); updateProgress(); autoSave()"></textarea>
+        <div class="char-row"><span class="char-count" id="cc1">0자</span><span class="char-tip">권장 100~180자</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="badge badge-blue">Step 2</span> 이 회사를 선택한 이유 (회사 분석)</div>
+        <div class="hint"><strong>회사 이름을 빼면 어색해야 합니다.</strong> 채용공고·사업보고서·뉴스에서 찾은 구체적 사실을 근거로 쓰세요.</div>
+        <textarea id="motive_company" rows="4" placeholder="왜 다른 회사가 아닌 이 회사인지 구체적 근거를 적어주세요." oninput="cc(this,'cc2'); updateProgress(); autoSave()"></textarea>
+        <div class="char-row"><span class="char-count" id="cc2">0자</span><span class="char-tip">권장 80~150자</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="badge badge-green">Step 3</span> 내가 기여할 수 있는 점</div>
+        <div class="hint">앞의 두 내용을 연결해서 <strong>"나의 역량 → 이 직무에서의 기여"</strong>로 마무리하세요.</div>
+        <textarea id="motive_contrib" rows="3" placeholder="내 경험·역량이 이 직무에서 어떻게 발휘될지 적어주세요." oninput="cc(this,'cc3'); updateProgress(); autoSave()"></textarea>
+        <div class="char-row"><span class="char-count" id="cc3">0자</span><span class="char-tip">권장 80~130자</span></div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="switchTab(0)">← 이전</button>
+      <button class="btn btn-primary" onclick="switchTab(2)">다음 → 역량·경험</button>
+    </div>
+  </div>
+
+  <!-- Panel 2: STAR -->
+  <div class="tab-panel" id="panel-2">
+    <div class="card">
+      <div class="card-title">직무 역량 — STAR 구조</div>
+      <div class="notice"><strong>에피소드 1개를 완결하는 것이 10개 나열보다 강력합니다.</strong> R(결과)에는 반드시 숫자 또는 제3자의 인정을 포함하세요.</div>
+      <div class="star-grid">
+        <div class="field">
+          <span class="star-tag star-s">S — 상황 (Situation)</span>
+          <div class="hint">언제, 어디서, 어떤 배경이었는지 2~3문장으로.<br>예: "카페 아르바이트에서 하루 평균 90건의 결제를 단독으로 처리했습니다."</div>
+          <textarea id="star_s" rows="5" placeholder="상황과 배경을 적어주세요." oninput="cc(this,'cs1'); updateProgress(); autoSave()"></textarea>
+          <div class="char-row"><span class="char-count" id="cs1">0자</span></div>
+        </div>
+        <div class="field">
+          <span class="star-tag star-t">T — 과제 (Task)</span>
+          <div class="hint">내가 맡은 역할과 해결해야 할 과제가 무엇이었는지.<br>예: "마감 시 시재 불일치 역추적 시간을 단축하는 것이 목표였습니다."</div>
+          <textarea id="star_t" rows="5" placeholder="나의 역할과 과제를 적어주세요." oninput="cc(this,'cs2'); updateProgress(); autoSave()"></textarea>
+          <div class="char-row"><span class="char-count" id="cs2">0자</span></div>
+        </div>
+        <div class="field">
+          <span class="star-tag star-a">A — 행동 (Action)</span>
+          <div class="hint">"우리 팀은"이 아닌 내가 직접 한 행동.<br>예: "결제 유형별 건수를 엑셀로 분류하고 불일치 패턴을 3개월간 기록했습니다."</div>
+          <textarea id="star_a" rows="5" placeholder="내가 직접 한 구체적 행동을 적어주세요." oninput="cc(this,'cs3'); updateProgress(); autoSave()"></textarea>
+          <div class="char-row"><span class="char-count" id="cs3">0자</span></div>
+        </div>
+        <div class="field">
+          <span class="star-tag star-r">R — 결과 (Result) ★숫자 필수</span>
+          <div class="hint"><strong>수치, 기간, 비율, 순위, 제3자 평가</strong> 중 반드시 하나 포함.<br>예: "마감 역추적 시간 40분→8분 단축. 점주로부터 매뉴얼화 요청 받음."</div>
+          <textarea id="star_r" rows="5" placeholder="숫자가 포함된 결과를 적어주세요." oninput="cc(this,'cs4'); updateProgress(); autoSave()"></textarea>
+          <div class="char-row"><span class="char-count" id="cs4">0자</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="switchTab(1)">← 이전</button>
+      <button class="btn btn-primary" onclick="switchTab(3)">다음 → 장단점</button>
+    </div>
+  </div>
+
+  <!-- Panel 3: 장단점 -->
+  <div class="tab-panel" id="panel-3">
+    <div class="card">
+      <div class="card-title">성격의 장단점</div>
+
+      <div class="field">
+        <div class="field-label"><span class="badge badge-green">장점</span> 직무와 연결된 행동으로</div>
+        <div class="hint">"저의 장점은 꼼꼼함입니다"로 시작하면 탈락. <strong>장점이 발휘된 구체적 상황과 결과</strong>로 바로 시작하세요.<br>예: "전표 검토 시 타인이 놓친 오류 3건을 발견한 경험이 있습니다. 이는 숫자의 흐름 전체를 맥락으로 파악하는 습관에서 비롯됩니다."</div>
+        <textarea id="strength" rows="5" placeholder="장점이 드러난 구체적 사례와 직무 연결을 적어주세요." oninput="cc(this,'cd1'); updateProgress(); autoSave()"></textarea>
+        <div class="char-row"><span class="char-count" id="cd1">0자</span><span class="char-tip">권장 150~250자</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="badge badge-amber">단점</span> 극복 과정 + 현재 상태까지</div>
+        <div class="hint">단점 → 언제 문제가 됐는지 → 어떻게 보완했는지 → <strong>현재는 어떻게 달라졌는지</strong> 순서로 쓰세요.<br>"아직 노력 중입니다"로 끝나면 미완성 처리됩니다.</div>
+        <textarea id="weakness" rows="5" placeholder="실제 단점 → 문제 상황 → 극복 행동 → 현재 개선 결과를 적어주세요." oninput="cc(this,'cd2'); updateProgress(); autoSave()"></textarea>
+        <div class="char-row"><span class="char-count" id="cd2">0자</span><span class="char-tip">권장 150~250자</span></div>
+      </div>
+
+      <div class="del-list">
+        <p style="font-size:11px;font-weight:600;color:var(--text2);margin-bottom:4px;">즉시 삭제 표현</p>
+        <div class="del-item"><span class="del-x">삭제</span><span class="del-text">"저의 단점은 완벽주의입니다" — 장점 포장형, 채용 담당자가 가장 싫어하는 패턴</span></div>
+        <div class="del-item"><span class="del-x">삭제</span><span class="del-text">"아직 부족하지만 노력하겠습니다" — 결과 없는 마무리는 미완성</span></div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="switchTab(2)">← 이전</button>
+      <button class="btn btn-primary" onclick="switchTab(4)">다음 → 입사 후 포부</button>
+    </div>
+  </div>
+
+  <!-- Panel 4: 포부 -->
+  <div class="tab-panel" id="panel-4">
+    <div class="card">
+      <div class="card-title">입사 후 포부</div>
+
+      <div class="field">
+        <div class="field-label"><span class="badge badge-purple">단기 목표</span> 입사 후 3~6개월</div>
+        <div class="hint"><strong>"1년차·2년차·3년차 나열"은 2018년 포맷입니다.</strong> 입사 후 첫 3~6개월 안에 달성할 구체적 행동을 쓰세요.<br>자가진단: 회사 이름을 빼도 어색하지 않으면 다시 쓰세요.<br>예: "입사 3개월 내 귀사의 결산 프로세스와 계정과목 체계를 직접 정리해 팀에 공유하겠습니다."</div>
+        <textarea id="goal_short" rows="4" placeholder="입사 후 3~6개월 내 달성할 구체적 행동을 적어주세요." oninput="cc(this,'cg1'); updateProgress(); autoSave()"></textarea>
+        <div class="char-row"><span class="char-count" id="cg1">0자</span><span class="char-tip">권장 100~180자</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="badge badge-blue">중장기 기여</span> 직무 전문성과 연결</div>
+        <div class="hint">자격증 취득 계획, 기여하고 싶은 업무 영역 등 <strong>검증 가능한 계획</strong>으로 마무리하세요.</div>
+        <textarea id="goal_long" rows="4" placeholder="검증 가능한 중장기 목표를 적어주세요." oninput="cc(this,'cg2'); updateProgress(); autoSave()"></textarea>
+        <div class="char-row"><span class="char-count" id="cg2">0자</span><span class="char-tip">권장 80~150자</span></div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="switchTab(3)">← 이전</button>
+      <button class="btn btn-primary" onclick="switchTab(5)">다음 → 자가진단</button>
+    </div>
+  </div>
+
+  <!-- Panel 5: 자가진단 -->
+  <div class="tab-panel" id="panel-5">
+    <div class="card">
+      <div class="card-title">자가진단 체크리스트</div>
+      <div class="score-box">
+        <div class="score-num" id="score-num">0 / 10</div>
+        <div class="score-lbl">항목을 체크하며 자소서를 점검하세요</div>
+        <div id="grade-chip"></div>
+      </div>
+      <div id="checklist">
+        <div class="check-item"><input type="checkbox" onchange="calcScore()"><div class="check-content"><div class="main">지원동기 첫 문장이 구체적 사건·경험으로 시작한다</div><div class="sub">"성장 가능성" 또는 "매력을 느꼈습니다"로 시작하면 ✕</div></div></div>
+        <div class="check-item"><input type="checkbox" onchange="calcScore()"><div class="check-content"><div class="main">회사 이름을 빼면 어색한 문장이 최소 1개 이상 있다</div><div class="sub">어느 회사에나 붙일 수 있는 지원동기는 회사 분석 없음 신호</div></div></div>
+        <div class="check-item"><input type="checkbox" onchange="calcScore()"><div class="check-content"><div class="main">경험 서술에 S-T-A-R 구조가 모두 갖춰져 있다</div><div class="sub">상황·과제·행동·결과 중 하나라도 빠지면 에피소드 미완성</div></div></div>
+        <div class="check-item"><input type="checkbox" onchange="calcScore()"><div class="check-content"><div class="main">결과(R)에 숫자, 기간, 비율, 순위 중 하나가 포함되어 있다</div><div class="sub">"잘 마무리됐습니다"는 결과가 아닌 요약</div></div></div>
+        <div class="check-item"><input type="checkbox" onchange="calcScore()"><div class="check-content"><div class="main">전체 자소서에 숫자가 최소 4개 이상 등장한다</div><div class="sub">기간(3개월), 횟수(주 3회), 비율(40% 단축), 규모(90건) 등</div></div></div>
+        <div class="check-item"><input type="checkbox" onchange="calcScore()"><div class="check-content"><div class="main">"열심히, 최선을 다해, 꾸준히, 묵묵히"가 없다</div><div class="sub">이 표현들은 수치와 행동으로 교체 완료되어야 함</div></div></div>
+        <div class="check-item"><input type="checkbox" onchange="calcScore()"><div class="check-content"><div class="main">단점이 "완벽주의" 또는 "너무 열정적"이 아니다</div><div class="sub">장점 포장형 단점은 채용 담당자가 즉시 알아챔</div></div></div>
+        <div class="check-item"><input type="checkbox" onchange="calcScore()"><div class="check-content"><div class="main">단점 서술이 "현재 상태 개선"으로 마무리된다</div><div class="sub">"아직 노력 중입니다"로 끝나면 미완성</div></div></div>
+        <div class="check-item"><input type="checkbox" onchange="calcScore()"><div class="check-content"><div class="main">입사 후 포부가 연도별 나열이 아닌 구체적 행동으로 쓰여 있다</div><div class="sub">"입사 N개월 내 ○○ 달성"처럼 검증 가능한 목표여야 함</div></div></div>
+        <div class="check-item"><input type="checkbox" onchange="calcScore()"><div class="check-content"><div class="main">채용공고의 핵심 키워드가 자소서 안에 자연스럽게 녹아있다</div><div class="sub">JD 키워드 포함 시 ATS 자동 필터 통과율 상승</div></div></div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="switchTab(4)">← 이전</button>
+      <button class="btn btn-primary" onclick="switchTab(6)">다음 → 미리보기</button>
+    </div>
+  </div>
+
+  <!-- Panel 6: 미리보기 -->
+  <div class="tab-panel" id="panel-6">
+    <div class="card">
+      <div class="card-title">작성 내용 미리보기</div>
+      <div class="notice">아래 내용을 복사해서 지원 사이트에 붙여넣거나, 첨삭 선생님께 전달하세요.</div>
+      <div class="preview-area" id="preview-out"><span class="preview-empty">앞의 탭에서 내용을 입력하면 여기에 자동으로 모입니다.</span></div>
+      <div class="btn-row">
+        <button class="btn" onclick="generatePreview()">새로고침</button>
+        <button class="btn btn-primary" onclick="copyText()">전체 복사</button>
+        <button class="btn btn-save" onclick="exportDocx()">Word(.docx) 내보내기</button>
+        <button class="btn" onclick="printPage()">인쇄 / PDF 저장</button>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="switchTab(5)">← 이전</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  /* ── 탭 ── */
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var tabPanels = document.querySelectorAll('.tab-panel');
+
+  function switchTab(i) {
+    tabBtns.forEach(function(b, idx) { b.classList.toggle('active', idx === i); });
+    tabPanels.forEach(function(p, idx) { p.classList.toggle('active', idx === i); });
+    window.scrollTo(0, 0);
+    if (i === 6) generatePreview();
+  }
+
+  /* ── 글자수 카운터 ── */
+  function cc(el, id) {
+    var n = el.value.length;
+    var span = document.getElementById(id);
+    span.textContent = n + '자';
+    span.className = 'char-count' + (n > 600 ? ' over' : n > 450 ? ' warn' : '');
+  }
+
+  var fieldIds = ['company','job','certs','exp_key','motive_event','motive_company','motive_contrib','star_s','star_t','star_a','star_r','strength','weakness','goal_short','goal_long'];
+
+  /* ── 진행률 ── */
+  function updateProgress() {
+    var filled = fieldIds.filter(function(id) {
+      var el = document.getElementById(id);
+      return el && el.value.trim().length > 0;
+    }).length;
+    var pct = Math.round(filled / fieldIds.length * 100);
+    document.getElementById('prog').style.width = pct + '%';
+    document.getElementById('pct').textContent = pct + '%';
+  }
+
+  /* ── 자가진단 ── */
+  function calcScore() {
+    var checks = document.querySelectorAll('#checklist input[type=checkbox]');
+    var score = Array.from(checks).filter(function(c) { return c.checked; }).length;
+    document.getElementById('score-num').textContent = score + ' / 10';
+    var grade, color, bg;
+    if (score >= 9) { grade = 'A등급 — 서류 통과 가능성 높음'; color = '#27500A'; bg = '#EAF3DE'; }
+    else if (score >= 7) { grade = 'B등급 — 핵심 수정 후 제출 가능'; color = '#0C447C'; bg = '#E6F1FB'; }
+    else if (score >= 5) { grade = 'C등급 — 전면 재작성 권장'; color = '#633806'; bg = '#FAEEDA'; }
+    else { grade = 'D등급 — 광탈 위험, 지금 당장 수정'; color = '#A32D2D'; bg = '#FCEBEB'; }
+    document.getElementById('grade-chip').innerHTML = '<span class="grade-chip" style="background:' + bg + ';color:' + color + ';">' + grade + '</span>';
+  }
+
+  /* ── 미리보기 텍스트 생성 ── */
+  function getFullText() {
+    var company = document.getElementById('company').value || '[회사명]';
+    var job = document.getElementById('job').value || '[직무]';
+    var certs = document.getElementById('certs').value;
+    var expKey = document.getElementById('exp_key').value;
+    var parts = [];
+    parts.push('[ 지원 정보 ]\n회사: ' + company + '\n직무: ' + job + (certs ? '\n자격증/툴: ' + certs : '') + (expKey ? '\n핵심 경험: ' + expKey : ''));
+    var me = document.getElementById('motive_event').value;
+    var mc = document.getElementById('motive_company').value;
+    var mco = document.getElementById('motive_contrib').value;
+    if (me || mc || mco) {
+      var motParts = [];
+      if (me) motParts.push(me);
+      if (mc) motParts.push(mc);
+      if (mco) motParts.push(mco);
+      parts.push('[ 지원동기 ]\n' + motParts.join('\n\n'));
+    }
+    var ss = document.getElementById('star_s').value;
+    var st = document.getElementById('star_t').value;
+    var sa = document.getElementById('star_a').value;
+    var sr = document.getElementById('star_r').value;
+    if (ss || st || sa || sr) {
+      var starParts = [];
+      if (ss) starParts.push('[상황] ' + ss);
+      if (st) starParts.push('[과제] ' + st);
+      if (sa) starParts.push('[행동] ' + sa);
+      if (sr) starParts.push('[결과] ' + sr);
+      parts.push('[ 직무 역량 ]\n' + starParts.join('\n\n'));
+    }
+    var str = document.getElementById('strength').value;
+    var wk = document.getElementById('weakness').value;
+    if (str || wk) {
+      var pdParts = [];
+      if (str) pdParts.push('[장점] ' + str);
+      if (wk) pdParts.push('[단점] ' + wk);
+      parts.push('[ 장단점 ]\n' + pdParts.join('\n\n'));
+    }
+    var gs = document.getElementById('goal_short').value;
+    var gl = document.getElementById('goal_long').value;
+    if (gs || gl) {
+      var gParts = [];
+      if (gs) gParts.push('[단기 목표] ' + gs);
+      if (gl) gParts.push('[중장기 기여] ' + gl);
+      parts.push('[ 입사 후 포부 ]\n' + gParts.join('\n\n'));
+    }
+    return parts.join('\n\n─────────────────────────\n\n');
+  }
+
+  function generatePreview() {
+    var text = getFullText();
+    var el = document.getElementById('preview-out');
+    if (text.replace(/\[.*?\]/g,'').trim() === '') {
+      el.innerHTML = '<span class="preview-empty">앞의 탭에서 내용을 입력하면 여기에 자동으로 모입니다.</span>';
+    } else {
+      el.textContent = text;
+    }
+  }
+
+  function copyText() {
+    var text = document.getElementById('preview-out').textContent;
+    navigator.clipboard.writeText(text).then(function() {
+      alert('클립보드에 복사됐습니다!');
+    }).catch(function() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      alert('클립보드에 복사됐습니다!');
+    });
+  }
+
+  function printPage() { window.print(); }
+
+  /* ════════════════════════════════════════
+     버전 관리 시스템
+     구조: localStorage['coversheet_2026_meta'] = { currentId, versions:[{id,name,savedAt}] }
+           localStorage['coversheet_ver_' + id] = { ...fieldData }
+  ════════════════════════════════════════ */
+
+  var META_KEY = 'coversheet_2026_meta';
+
+  function getMeta() {
+    try {
+      var raw = localStorage.getItem(META_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch(e) {}
+    return { currentId: null, versions: [] };
+  }
+
+  function saveMeta(meta) {
+    try { localStorage.setItem(META_KEY, JSON.stringify(meta)); } catch(e) {}
+  }
+
+  function genId() {
+    return 'v' + Date.now() + Math.random().toString(36).slice(2, 6);
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    return (d.getMonth()+1) + '/' + d.getDate() + ' ' +
+           String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+  }
+
+  /* 현재 필드 → object */
+  function collectFields() {
+    var data = {};
+    fieldIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) data[id] = el.value;
+    });
+    return data;
+  }
+
+  /* object → 화면 필드에 주입 */
+  function applyFields(data) {
+    fieldIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.value = data[id] || '';
+      if (el.tagName === 'TEXTAREA') {
+        var m = el.getAttribute('oninput').match(/cc\(this,'(\w+)'\)/);
+        if (m) cc(el, m[1]);
+      }
+    });
+    // 체크박스는 초기화
+    document.querySelectorAll('#checklist input[type=checkbox]').forEach(function(c) { c.checked = false; });
+    calcScore();
+    updateProgress();
+  }
+
+  /* 현재 버전 저장 */
+  function saveCurrentVer() {
+    var meta = getMeta();
+    if (!meta.currentId) return;
+    var data = collectFields();
+    try { localStorage.setItem('coversheet_ver_' + meta.currentId, JSON.stringify(data)); } catch(e) {}
+    // savedAt 갱신
+    var ver = meta.versions.find(function(v) { return v.id === meta.currentId; });
+    if (ver) ver.savedAt = new Date().toISOString();
+    saveMeta(meta);
+    // UI 표시
+    var msg = document.getElementById('saved-msg');
+    msg.style.display = 'inline';
+    setTimeout(function() { msg.style.display = 'none'; }, 2000);
+  }
+
+  function autoSave() {
+    clearTimeout(window._autoSaveTimer);
+    window._autoSaveTimer = setTimeout(saveCurrentVer, 1200);
+  }
+  // 전역 alias (버튼에서 호출)
+  function saveAll() { saveCurrentVer(); }
+
+  /* 특정 버전 불러와서 화면 적용 */
+  function loadVer(id) {
+    var meta = getMeta();
+    // 현재 버전 먼저 저장
+    if (meta.currentId) saveCurrentVer();
+
+    meta.currentId = id;
+    saveMeta(meta);
+
+    try {
+      var raw = localStorage.getItem('coversheet_ver_' + id);
+      applyFields(raw ? JSON.parse(raw) : {});
+    } catch(e) { applyFields({}); }
+
+    var ver = meta.versions.find(function(v) { return v.id === id; });
+    document.getElementById('ver-current-name').textContent = ver ? ver.name : id;
+  }
+
+  /* 초기 로드 */
+  function initVersions() {
+    var meta = getMeta();
+
+    // 구버전 마이그레이션: coversheet_2026 키가 있으면 첫 버전으로 흡수
+    var legacy = null;
+    try { legacy = localStorage.getItem('coversheet_2026'); } catch(e) {}
+    if (legacy && meta.versions.length === 0) {
+      var legId = genId();
+      meta.versions.push({ id: legId, name: '기존 작성본', savedAt: new Date().toISOString() });
+      try { localStorage.setItem('coversheet_ver_' + legId, legacy); } catch(e) {}
+      try { localStorage.removeItem('coversheet_2026'); } catch(e) {}
+      meta.currentId = legId;
+      saveMeta(meta);
+    }
+
+    // 버전이 아예 없으면 기본 버전 하나 생성
+    if (meta.versions.length === 0) {
+      var defId = genId();
+      meta.versions.push({ id: defId, name: '버전 1', savedAt: new Date().toISOString() });
+      meta.currentId = defId;
+      saveMeta(meta);
+      try { localStorage.setItem('coversheet_ver_' + defId, JSON.stringify({})); } catch(e) {}
+    }
+
+    if (!meta.currentId) {
+      meta.currentId = meta.versions[0].id;
+      saveMeta(meta);
+    }
+
+    loadVer(meta.currentId);
+  }
+
+  /* ── 버전 목록 모달 ── */
+  function openVerModal() {
+    var meta = getMeta();
+    var inner = document.getElementById('ver-list-inner');
+    if (meta.versions.length === 0) {
+      inner.innerHTML = '<div class="ver-empty">저장된 버전이 없습니다.</div>';
+    } else {
+      inner.innerHTML = meta.versions.map(function(v) {
+        var isActive = v.id === meta.currentId;
+        return '<div class="ver-item' + (isActive ? ' active' : '') + '" onclick="switchVer(\'' + v.id + '\')">' +
+          '<span class="ver-item-name">' + escHtml(v.name) + (isActive ? ' ✓' : '') + '</span>' +
+          '<span class="ver-item-date">' + fmtDate(v.savedAt) + '</span>' +
+          '<button class="ver-item-del" onclick="event.stopPropagation(); deleteVer(\'' + v.id + '\')">삭제</button>' +
+          '</div>';
+      }).join('');
+    }
+    document.getElementById('ver-modal-bg').classList.add('open');
+  }
+
+  function switchVer(id) {
+    closeAllModals();
+    loadVer(id);
+  }
+
+  /* ── 새 버전 모달 ── */
+  function openNewVerModal() {
+    document.getElementById('new-ver-name').value = '';
+    document.getElementById('new-ver-modal-bg').classList.add('open');
+    setTimeout(function() { document.getElementById('new-ver-name').focus(); }, 100);
+  }
+
+  function createNewVer(copyCurrentData) {
+    var nameEl = document.getElementById('new-ver-name');
+    var name = nameEl.value.trim();
+    if (!name) { nameEl.focus(); nameEl.style.borderColor='#A32D2D'; return; }
+    nameEl.style.borderColor='';
+
+    var meta = getMeta();
+    // 현재 저장
+    if (meta.currentId) saveCurrentVer();
+
+    var newId = genId();
+    var newData = copyCurrentData ? collectFields() : {};
+    meta.versions.push({ id: newId, name: name, savedAt: new Date().toISOString() });
+    meta.currentId = newId;
+    saveMeta(meta);
+    try { localStorage.setItem('coversheet_ver_' + newId, JSON.stringify(newData)); } catch(e) {}
+
+    closeAllModals();
+    applyFields(newData);
+    document.getElementById('ver-current-name').textContent = name;
+  }
+
+  /* ── 버전 삭제 ── */
+  function deleteVer(id) {
+    var meta = getMeta();
+    if (meta.versions.length <= 1) { alert('마지막 버전은 삭제할 수 없습니다.'); return; }
+    if (!confirm('이 버전을 삭제하시겠습니까?')) return;
+    meta.versions = meta.versions.filter(function(v) { return v.id !== id; });
+    try { localStorage.removeItem('coversheet_ver_' + id); } catch(e) {}
+    if (meta.currentId === id) {
+      meta.currentId = meta.versions[0].id;
+      saveMeta(meta);
+      closeAllModals();
+      loadVer(meta.currentId);
+    } else {
+      saveMeta(meta);
+      openVerModal(); // 목록 새로고침
+    }
+  }
+
+  function deleteCurrentVer() {
+    var meta = getMeta();
+    if (!meta.currentId) return;
+    deleteVer(meta.currentId);
+  }
+
+  /* ── 모달 닫기 ── */
+  function closeAllModals() {
+    document.getElementById('ver-modal-bg').classList.remove('open');
+    document.getElementById('new-ver-modal-bg').classList.remove('open');
+  }
+
+  function closeModals(e) {
+    if (e.target === document.getElementById('ver-modal-bg') ||
+        e.target === document.getElementById('new-ver-modal-bg')) {
+      closeAllModals();
+    }
+  }
+
+  /* 엔터로 새 버전 생성 */
+  document.getElementById('new-ver-name').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') createNewVer(true);
+  });
+
+  function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ════════════════════════════════════════
+     Word(.docx) 내보내기
+  ════════════════════════════════════════ */
+  function exportDocx() {
+    if (typeof docx === 'undefined') {
+      alert('Word 내보내기 라이브러리를 불러오는 중입니다. 잠시 후 다시 시도해주세요.\n(인터넷 연결을 확인하세요.)');
+      return;
+    }
+
+    var {
+      Document, Packer, Paragraph, TextRun, HeadingLevel,
+      AlignmentType, BorderStyle, ShadingType, WidthType,
+      Table, TableRow, TableCell
+    } = docx;
+
+    // 현재 버전 이름 가져오기
+    var meta = getMeta();
+    var curVer = meta.versions.find(function(v) { return v.id === meta.currentId; });
+    var verName = curVer ? curVer.name : '자기소개서';
+
+    // 필드 값 수집
+    var company      = document.getElementById('company').value.trim()        || '(미입력)';
+    var job          = document.getElementById('job').value.trim()            || '(미입력)';
+    var certs        = document.getElementById('certs').value.trim()          || '(미입력)';
+    var expKey       = document.getElementById('exp_key').value.trim()        || '(미입력)';
+    var motEvent     = document.getElementById('motive_event').value.trim()   || '(미입력)';
+    var motCompany   = document.getElementById('motive_company').value.trim() || '(미입력)';
+    var motContrib   = document.getElementById('motive_contrib').value.trim() || '(미입력)';
+    var starS        = document.getElementById('star_s').value.trim()         || '(미입력)';
+    var starT        = document.getElementById('star_t').value.trim()         || '(미입력)';
+    var starA        = document.getElementById('star_a').value.trim()         || '(미입력)';
+    var starR        = document.getElementById('star_r').value.trim()         || '(미입력)';
+    var strength     = document.getElementById('strength').value.trim()       || '(미입력)';
+    var weakness     = document.getElementById('weakness').value.trim()       || '(미입력)';
+    var goalShort    = document.getElementById('goal_short').value.trim()     || '(미입력)';
+    var goalLong     = document.getElementById('goal_long').value.trim()      || '(미입력)';
+
+    // 헬퍼: 섹션 제목 단락
+    function sectionHead(text) {
+      return new Paragraph({
+        children: [new TextRun({ text: text, bold: true, size: 26, color: '0C447C', font: 'Arial' })],
+        spacing: { before: 320, after: 80 },
+        border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: '0C447C', space: 1 } }
+      });
+    }
+
+    // 헬퍼: 레이블 + 본문 단락 세트
+    function fieldBlock(label, value) {
+      var paras = [];
+      paras.push(new Paragraph({
+        children: [new TextRun({ text: label, bold: true, size: 20, color: '444440', font: 'Arial' })],
+        spacing: { before: 200, after: 40 }
+      }));
+      // 줄바꿈 처리: \n을 단락으로 분리
+      var lines = value.split('\n');
+      lines.forEach(function(line, idx) {
+        paras.push(new Paragraph({
+          children: [new TextRun({ text: line, size: 22, font: 'Malgun Gothic' })],
+          spacing: { before: 0, after: idx === lines.length - 1 ? 120 : 0 }
+        }));
+      });
+      return paras;
+    }
+
+    // 헬퍼: 정보 테이블 행
+    function infoRow(label, value) {
+      var border = { style: BorderStyle.SINGLE, size: 1, color: 'CCCCCC' };
+      var borders = { top: border, bottom: border, left: border, right: border };
+      return new TableRow({
+        children: [
+          new TableCell({
+            borders, width: { size: 2200, type: WidthType.DXA },
+            shading: { fill: 'E6F1FB', type: ShadingType.CLEAR },
+            margins: { top: 80, bottom: 80, left: 120, right: 120 },
+            children: [new Paragraph({ children: [new TextRun({ text: label, bold: true, size: 20, font: 'Arial', color: '0C447C' })] })]
+          }),
+          new TableCell({
+            borders, width: { size: 6826, type: WidthType.DXA },
+            margins: { top: 80, bottom: 80, left: 120, right: 120 },
+            children: [new Paragraph({ children: [new TextRun({ text: value, size: 20, font: 'Malgun Gothic' })] })]
+          })
+        ]
+      });
+    }
+
+    var today = new Date();
+    var dateStr = today.getFullYear() + '년 ' + (today.getMonth()+1) + '월 ' + today.getDate() + '일';
+
+    var children = [];
+
+    // ── 표지 제목
+    children.push(new Paragraph({
+      children: [new TextRun({ text: '자기소개서', bold: true, size: 52, font: 'Arial', color: '1a1a1a' })],
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 480, after: 120 }
+    }));
+    children.push(new Paragraph({
+      children: [new TextRun({ text: verName + '  ·  ' + dateStr, size: 22, font: 'Malgun Gothic', color: '666660' })],
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 0, after: 600 }
+    }));
+
+    // ── 1. 지원 정보 (테이블)
+    children.push(sectionHead('① 지원 정보'));
+    children.push(new Table({
+      width: { size: 9026, type: WidthType.DXA },
+      columnWidths: [2200, 6826],
+      spacing: { before: 160, after: 0 },
+      rows: [
+        infoRow('지원 회사', company),
+        infoRow('지원 직무', job),
+        infoRow('보유 자격증 / 툴', certs),
+        infoRow('핵심 경험 키워드', expKey)
+      ]
+    }));
+
+    // ── 2. 지원동기
+    children.push(sectionHead('② 지원동기'));
+    fieldBlock('Step 1 — 이 직무를 선택한 결정적 사건', motEvent).forEach(function(p) { children.push(p); });
+    fieldBlock('Step 2 — 이 회사를 선택한 이유', motCompany).forEach(function(p) { children.push(p); });
+    fieldBlock('Step 3 — 내가 기여할 수 있는 점', motContrib).forEach(function(p) { children.push(p); });
+
+    // ── 3. 직무 역량 (STAR)
+    children.push(sectionHead('③ 직무 역량 — STAR 구조'));
+    fieldBlock('S — 상황 (Situation)', starS).forEach(function(p) { children.push(p); });
+    fieldBlock('T — 과제 (Task)', starT).forEach(function(p) { children.push(p); });
+    fieldBlock('A — 행동 (Action)', starA).forEach(function(p) { children.push(p); });
+    fieldBlock('R — 결과 (Result)', starR).forEach(function(p) { children.push(p); });
+
+    // ── 4. 장단점
+    children.push(sectionHead('④ 성격의 장단점'));
+    fieldBlock('장점', strength).forEach(function(p) { children.push(p); });
+    fieldBlock('단점', weakness).forEach(function(p) { children.push(p); });
+
+    // ── 5. 입사 후 포부
+    children.push(sectionHead('⑤ 입사 후 포부'));
+    fieldBlock('단기 목표 (입사 후 3~6개월)', goalShort).forEach(function(p) { children.push(p); });
+    fieldBlock('중장기 기여', goalLong).forEach(function(p) { children.push(p); });
+
+    var docObj = new Document({
+      styles: {
+        default: { document: { run: { font: 'Malgun Gothic', size: 22 } } }
+      },
+      sections: [{
+        properties: {
+          page: {
+            size: { width: 11906, height: 16838 },   // A4
+            margin: { top: 1200, right: 1200, bottom: 1200, left: 1200 }
+          }
+        },
+        children: children
+      }]
+    });
+
+    Packer.toBlob(docObj).then(function(blob) {
+      var safeName = verName.replace(/[\\/:*?"<>|]/g, '_');
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = '자소서_' + safeName + '.docx';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+    }).catch(function(e) {
+      alert('Word 파일 생성 중 오류가 발생했습니다.\n' + e.message);
+    });
+  }
+
+  /* ── 시작 ── */
+  initVersions();
+</script>
+</body>
+</html>
